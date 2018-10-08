@@ -1,0 +1,31 @@
+int val;
+#include <SoftwareSerial.h>
+SoftwareSerial BTserial(10, 11);
+void setup()
+{
+Serial.begin(9600);
+BTserial.begin(9600);
+}
+void loop()
+{
+val = analogRead(A1);
+float mv = ( val/1024.0)*5550; 
+float cel = mv/10;
+
+Serial.print("TEMPRATURE = ");    //celcius degree coding
+Serial.print(cel);
+Serial.print("*C");
+Serial.println();
+delay(1000);
+
+if (cel>32.0)
+{Serial.print("Fever Condition");
+Serial.println();
+delay(1000);}
+else
+{Serial.print("Normal body temperature");
+Serial.println();
+delay(1000);
+}
+
+}
